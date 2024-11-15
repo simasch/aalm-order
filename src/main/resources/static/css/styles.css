@@ -1,0 +1,13 @@
+.catalog {
+    margin: 2rem;
+}
+
+.catalog table {
+    margin-top: 2rem;
+
+    width: 100%;
+}
+
+.catalog table th {
+    text-align: left;
+}
