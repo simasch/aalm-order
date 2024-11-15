@@ -16,7 +16,7 @@ public class CatalogClient {
     public Book[] findBooks(String keywords) {
         return restClient
                 .get()
-                .uri("http://localhost:8080/api/books=?%s".formatted(keywords))
+                .uri("http://localhost:8080/api/books?keywords=%s".formatted(keywords))
                 .retrieve()
                 .body(Book[].class);
     }
@@ -24,7 +24,7 @@ public class CatalogClient {
     public Book getBook(String isbn) {
         return restClient
                 .get()
-                .uri("http://localhost:8080/api/%s".formatted(isbn))
+                .uri("http://localhost:8080/api/books/%s".formatted(isbn))
                 .retrieve()
                 .body(Book.class);
     }
