@@ -1,0 +1,13 @@
+services:
+
+  catalog:
+    image: "catalog:0.0.1-SNAPSHOT"
+    ports:
+      - "8080:8080"
+
+  order:
+    image: "order:0.0.1-SNAPSHOT"
+    ports:
+      - "8081:8081"
+    environment:
+      CATALOG_URL: "http://catalog:8080"
