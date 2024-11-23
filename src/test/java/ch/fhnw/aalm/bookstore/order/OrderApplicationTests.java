@@ -1,4 +1,4 @@
-package ch.fhnw.aalm.bookstore.catalog;
+package ch.fhnw.aalm.bookstore.order;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
