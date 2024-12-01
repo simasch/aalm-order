@@ -21,13 +21,6 @@ jobs:
                     java-version: '21'
                     distribution: 'adopt'
 
-            -   name: Cache SonarCloud packages
-                uses: actions/cache@v4
-                with:
-                    path: ~/.sonar/cache
-                    key: ${{ runner.os }}-sonar
-                    restore-keys: ${{ runner.os }}-sonar
-
             -   name: Cache local Maven repository
                 uses: actions/cache@v4
                 with:
@@ -36,5 +29,5 @@ jobs:
                     restore-keys: |
                         ${{ runner.os }}-maven-
 
-            -   name: Maven Build, Test, and Sonar
+            -   name: Maven Build, Test, and Create Docker Image
                 run: mvn -B spring-boot:build-image
