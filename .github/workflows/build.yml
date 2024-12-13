@@ -15,6 +15,12 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
+            - name: Log in to Docker Hub
+              uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+              with:
+                  username: ${{ secrets.DOCKER_USERNAME }}
+                  password: ${{ secrets.DOCKER_PASSWORD }}
+
             -   name: Set up JDK 21
                 uses: actions/setup-java@v4
                 with:
@@ -31,3 +37,10 @@ jobs:
 
             -   name: Maven Build, Test, and Create Docker Image
                 run: mvn -B spring-boot:build-image
+
+            -   name: Docker Tag
+                run: docker tag catalog:0.0.1-SNAPSHOT simas/catalog:0.0.1-SNAPSHOT
+
+            -   name: Docker Push
+                run: docker push simas/catalog:0.0.1-SNAPSHOT
+
