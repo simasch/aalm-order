@@ -36,11 +36,7 @@ jobs:
                         ${{ runner.os }}-maven-
 
             -   name: Maven Build, Test, and Create Docker Image
-                run: mvn -B spring-boot:build-image
-
-            -   name: Docker Tag
-                run: docker tag order:0.0.1-SNAPSHOT simas/order:0.0.1-SNAPSHOT
+                run: mvn -B spring-boot:build-image -Dspring-boot.build-image.imageName=simas/order:${{ github.run_number }}
 
             -   name: Docker Push
-                run: docker push simas/order:0.0.1-SNAPSHOT
-
+                run: docker push simas/order:${{ github.run_number }}
