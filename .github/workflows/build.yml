@@ -39,8 +39,8 @@ jobs:
                 run: mvn -B spring-boot:build-image
 
             -   name: Docker Tag
-                run: docker tag catalog:0.0.1-SNAPSHOT simas/catalog:0.0.1-SNAPSHOT
+                run: docker tag order:0.0.1-SNAPSHOT simas/order:0.0.1-SNAPSHOT
 
             -   name: Docker Push
-                run: docker push simas/catalog:0.0.1-SNAPSHOT
+                run: docker push simas/order:0.0.1-SNAPSHOT
 
