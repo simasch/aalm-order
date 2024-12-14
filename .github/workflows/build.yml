@@ -40,3 +40,20 @@ jobs:
 
             -   name: Docker Push
                 run: docker push simas/order:${{ github.run_number }}
+
+            -   name: Set up GKE credentials
+                uses: google-github-actions/auth@v2
+                with:
+                    credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+            -   name: Set up Cloud SDK
+                uses: google-github-actions/setup-gcloud@v2
+
+            -   name: Get GKE credentials
+                uses: google-github-actions/get-gke-credentials@v2
+                with:
+                    cluster_name: autopilot-cluster-1
+                    location: us-central1
+
+            -   name: Update deployment
+                run: kubectl set image deployment/order order-1=simas/order:${{ github.run_number }}
